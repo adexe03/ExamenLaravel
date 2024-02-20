@@ -23,7 +23,7 @@
         @show
     </main>
     <footer>
-        <p>Algo</p>
+        <p>Pié de página</p>
     </footer>
 </body>
 
