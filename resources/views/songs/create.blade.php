@@ -1,0 +1,47 @@
+@extends('layouts.master')
+
+@section('content')
+    <h1>Añadir una Canción</h1>
+    @if ($errors->any())
+        <div class="bg-red-600">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{ route('songs.store') }}" method="POST">
+        @csrf
+        <p>
+            <label for="">Nombre:</label>
+            <input type="text" name="name" class="@error('name') border-red-600 @enderror" value="{{ old('name') }}">
+            @error('name')
+            <div class="bg-red-200">
+                {{ $message }}
+            </div>
+        @enderror
+        </p>
+        <p>
+            <label for="">Precio</label>
+            <input type="text" step="0.01" name="price" value="{{ old('price') }}">
+            @error('price')
+            <div class="bg-red-200">
+                {{ $message }}
+            </div>
+        @enderror
+        </p>
+        <p>
+            <label for="">Stock</label>
+            <input type="text" name="stock" value="{{ old('stock') }}">
+            @error('stock')
+            <div class="bg-red-200">
+                {{ $message }}
+            </div>
+        @enderror
+        </p>
+        <p>
+            <input type="submit" value="Crear Artículo">
+        </p>
+    </form>
+@endsection
