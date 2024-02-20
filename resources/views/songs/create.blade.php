@@ -14,34 +14,23 @@
     <form action="{{ route('songs.store') }}" method="POST">
         @csrf
         <p>
+            <label for="">ID Albúm:</label>
+            <input type="text" name="album_id" value="{{ old('album_id') }}">
+        </p>
+        <p>
             <label for="">Nombre:</label>
-            <input type="text" name="name" class="@error('name') border-red-600 @enderror" value="{{ old('name') }}">
-            @error('name')
-            <div class="bg-red-200">
-                {{ $message }}
-            </div>
-        @enderror
+            <input type="text" name="name" value="{{ old('name') }}">
         </p>
         <p>
-            <label for="">Precio</label>
-            <input type="text" step="0.01" name="price" value="{{ old('price') }}">
-            @error('price')
-            <div class="bg-red-200">
-                {{ $message }}
-            </div>
-        @enderror
+            <label for="">Duración:</label>
+            <input type="number" name="duration" value="{{ old('duration') }}">
         </p>
         <p>
-            <label for="">Stock</label>
-            <input type="text" name="stock" value="{{ old('stock') }}">
-            @error('stock')
-            <div class="bg-red-200">
-                {{ $message }}
-            </div>
-        @enderror
+            <label for="">Orden en el albúm:</label>
+            <input type="number" name="order" value="{{ old('order') }}">
         </p>
         <p>
-            <input type="submit" value="Crear Artículo">
+            <input type="submit" value="Añadir Canción">
         </p>
     </form>
 @endsection

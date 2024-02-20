@@ -22,7 +22,7 @@ class SongsController extends Controller
      */
     public function create()
     {
-        //
+        return view('songs.create');
     }
 
     /**
@@ -37,14 +37,14 @@ class SongsController extends Controller
             'order' => 'required'
         ]);
 
-        $song = new Song();
+        $song = new Songs();
         $song->album_id = $request->input('album_id');
         $song->name = $request->input('name');
         $song->duration = $request->input('duration');
         $song->order = $request->input('order');
         $song->save();
 
-        return redirect()->route('article.index')->with('success', 'Artículo creado correctamente');
+        return redirect()->route('songs.index')->with('success', 'Canción añadida correctamente');
     }
 
     /**
